@@ -74,9 +74,11 @@ function About() {
                     Unbeatable Service Quality forever.
                   </h3>
                   <p className="max-w-xl xl:mx-0 mx-auto text-sm md:text-base">
-                    I specialize in crafting intuitive websites with
-                    cutting-edge technology, delivering dynamic and engaging
-                    user experiences.
+                    I&apos;m a 16-year-old full-stack developer with over three
+                    years of experience specializing in crafting intuitive
+                    websites with cutting-edge technology. I&apos;ve sharped my
+                    skills by working on various projects on platforms like
+                    Fiverr for more than a year, earning over $200.
                   </p>
                   {/* icons */}
                   <div className="grid xl:grid-cols-2 gap-4 my-8">

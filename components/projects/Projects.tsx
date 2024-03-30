@@ -56,9 +56,9 @@ export default async function Projects() {
             <Link key={idx} href={project.link} target="_blank">
               <div>
                 <CardContainer
-                  className={`inter-var border-[7px] rounded-lg ${project.outlineColor}`}
+                  className={`inter-var border-[7px] rounded-2xl ${project.outlineColor}`}
                 >
-                  <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border">
+                  <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-lg p-6 border">
                     <CardItem
                       translateZ="50"
                       className="text-xl font-bold text-neutral-600 dark:text-white"
