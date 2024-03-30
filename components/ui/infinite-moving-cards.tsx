@@ -75,7 +75,7 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_5%,white_95%,transparent)] md:[mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]",
         className
       )}
     >
@@ -89,11 +89,7 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 md:w-[450px]"
-            style={{
-              background:
-                "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
-            }}
+            className="w-[350px] max-w-full shadow-lg shadow-primary/5 relative rounded-2xl border flex-shrink-0 border-slate-300 dark:border-slate-700 px-8 py-6 md:w-[450px]"
             key={item.name}
           >
             <blockquote>
@@ -108,16 +104,16 @@ export const InfiniteMovingCards = ({
                     {item.name.slice(0, 2).toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
-                <span className="flex flex-col">
-                  <span className=" text-sm leading-[1.6] text-gray-400 font-normal">
+                <span className="flex flex-col text-black dark:text-white">
+                  <span className=" text-sm leading-[1.6] font-normal">
                     {item.name}
                   </span>
-                  <span className=" text-sm leading-[1.6] text-gray-400 font-normal">
+                  <span className=" text-sm leading-[1.6] font-normal">
                     {item.job}
                   </span>
                 </span>
               </div>
-              <span className=" relative z-20 mt-2 inline-block text-sm leading-[1.6] text-gray-100 font-normal">
+              <span className=" relative z-20 mt-2 inline-block text-sm leading-[1.6] text-gray-700 dark:text-gray-300 font-normal">
                 {item.review}
               </span>
             </blockquote>

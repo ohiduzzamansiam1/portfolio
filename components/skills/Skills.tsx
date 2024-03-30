@@ -2,12 +2,9 @@
 
 import {
   SiFirebase,
-  SiJavascript,
-  SiMongodb,
   SiNextdotjs,
   SiNodedotjs,
   SiNuxtdotjs,
-  SiPostgresql,
   SiPrisma,
   SiReact,
   SiSupabase,
@@ -18,10 +15,6 @@ import TitleText from "../reuseables/TitleText";
 import { HoverEffect } from "../ui/card-hover-effect";
 
 const skills = [
-  {
-    text: "JavaScript",
-    icon: SiJavascript,
-  },
   {
     text: "Node.js",
     icon: SiNodedotjs,
@@ -47,24 +40,16 @@ const skills = [
     icon: SiNuxtdotjs,
   },
   {
-    text: "Prisma",
-    icon: SiPrisma,
-  },
-  {
-    text: "MongoDB",
-    icon: SiMongodb,
-  },
-  {
-    text: "PostgreSQL",
-    icon: SiPostgresql,
-  },
-  {
     text: "Supabase",
     icon: SiSupabase,
   },
   {
     text: "Firebase",
     icon: SiFirebase,
+  },
+  {
+    text: "Prisma",
+    icon: SiPrisma,
   },
 ];
 
@@ -73,7 +58,7 @@ export default function Skills() {
     <div className="max-w-5xl mx-auto px-8">
       <TitleText
         text="Skills 💪"
-        className="flex flex-col items-center justify-center -rotate-6 mb-5"
+        className="flex flex-col items-center justify-center mb-5"
       />
       <HoverEffect items={skills} />
     </div>

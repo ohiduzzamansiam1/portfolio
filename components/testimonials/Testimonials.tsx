@@ -58,7 +58,11 @@ export default function Testimonials() {
         text="My clients? 🤔"
         className="flex flex-col items-center justify-center mb-8 lg:mb-20"
       />
-      <InfiniteMovingCards items={reviewsData} direction="right" speed="slow" />
+      <InfiniteMovingCards
+        items={reviewsData}
+        direction="right"
+        speed="normal"
+      />
     </>
   );
 }

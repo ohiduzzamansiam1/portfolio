@@ -1,31 +1,42 @@
-import { cn } from "@/lib/utils";
-import { client } from "@/sanity/lib/client";
+import { graphqlClient } from "@/lib/graphql/client";
+import { gql } from "graphql-request";
 import Image from "next/image";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
 import TitleText from "../reuseables/TitleText";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 
-export type ProjectType = {
+type Project = {
+  id: string;
   title: string;
-  description: string;
   link: string;
-  github_link: string;
-  imageUrl: string;
-  ring: string;
+  githubLink: string;
+  description: string;
+  image: {
+    url: string;
+  };
+  outlineColor: string;
 };
 
 const getProjects = async () => {
-  const query = `*[_type == "project"] {
-    title,
-    description,
-    link,
-    github_link,
-    ring,
-    "imageUrl": image.asset->url
-  }`;
-
-  const projects = await client.fetch<ProjectType[]>(query);
+  const query = gql`
+    query Projects {
+      projects {
+        id
+        title
+        link
+        githubLink
+        description
+        image {
+          url
+        }
+        outlineColor
+      }
+    }
+  `;
+  let { projects } = await graphqlClient.request<{ projects: Project[] }>(
+    query
+  );
   return projects;
 };
 
@@ -37,7 +48,7 @@ export default async function Projects() {
       <div className="max-w-5xl mx-auto sm:px-8">
         <TitleText
           text="Projects 🎨"
-          className="flex flex-col items-center justify-center rotate-6 mb-5"
+          className="flex flex-col items-center justify-center mb-5"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-4 pt-20">
@@ -45,7 +56,7 @@ export default async function Projects() {
             <Link key={idx} href={project.link} target="_blank">
               <div>
                 <CardContainer
-                  className={cn("inter-var ring-1 rounded-lg", project.ring)}
+                  className={`inter-var border-[7px] rounded-lg ${project.outlineColor}`}
                 >
                   <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border">
                     <CardItem
@@ -57,16 +68,16 @@ export default async function Projects() {
                     <CardItem
                       as="p"
                       translateZ="60"
-                      className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+                      className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300 line-clamp-1"
                     >
                       {project.description}
                     </CardItem>
                     <CardItem translateZ="100" className="w-full mt-4">
                       <Image
-                        src={project.imageUrl}
+                        src={project.image.url}
                         height="1000"
                         width="1000"
-                        className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                        className="max-h-56 w-full object-cover rounded-xl group-hover/card:shadow-xl"
                         alt="cover_image"
                       />
                     </CardItem>
@@ -83,7 +94,7 @@ export default async function Projects() {
                       <CardItem
                         translateZ={20}
                         as={Link}
-                        href={project.github_link}
+                        href={project.githubLink}
                         target="__blank"
                         className="px-4 flex items-center gap-x-1.5 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
                       >
