@@ -1,5 +1,6 @@
 "use client";
 
+import { useTexts } from "@/lib/store/useTexts";
 import {
   Calendar,
   GraduationCap,
@@ -44,6 +45,7 @@ const varients = {
 };
 
 function About() {
+  const { aboutTitle, aboutDescription } = useTexts();
   return (
     <>
       <section>
@@ -64,21 +66,15 @@ function About() {
                   className="w-full h-full mx-auto -z-10"
                   priority
                 />
-                <div className="h-60 lg:h-72  bg-gradient-to-t from-black absolute bottom-0 left-0 xl:bottom-0 w-full rounded-b-2xl"></div>
+                <div className="h-40 dark:h-52 lg:h-72  bg-gradient-to-t from-white dark:from-black absolute bottom-0 left-0 xl:bottom-0 w-full rounded-b-2xl"></div>
               </div>
             </div>
             <div className="flex-1 z-10 mt-5 dark:mt-0 ">
               <div>
                 <div className="text-center xl:text-left">
-                  <h3 className="mb-4 text-3xl font-bold">
-                    Unbeatable Service Quality forever.
-                  </h3>
+                  <h3 className="mb-4 text-3xl font-bold">{aboutTitle}</h3>
                   <p className="max-w-xl xl:mx-0 mx-auto text-sm md:text-base">
-                    I&apos;m a 16-year-old full-stack developer with over three
-                    years of experience specializing in crafting intuitive
-                    websites with cutting-edge technology. I&apos;ve sharped my
-                    skills by working on various projects on platforms like
-                    Fiverr for more than a year, earning over $200.
+                    {aboutDescription}
                   </p>
                   {/* icons */}
                   <div className="grid xl:grid-cols-2 gap-4 my-8">
